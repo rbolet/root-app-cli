@@ -3,15 +3,15 @@ const error = require("./utils/error");
 
 module.exports = () => {
   console.log("DON'T PANIC");
-  const args = minimist(process.argv.slice(2));
+  const input = minimist(process.argv.slice(2));
 
-  let command = args._[0] || "help";
+  let [command, ...args] = input._;
 
-  if (args.version || args.v) {
+  if (input.version || input.v) {
     command = "version";
   }
 
-  if (args.help || args.h) {
+  if (input.help || input.h) {
     command = "help";
   }
 
