@@ -2,12 +2,25 @@ const minimist = require("minimist");
 
 module.exports = () => {
   console.log("DON'T PANIC");
-  const arguments = minimist(process.argv.slice(2));
-  const command = arguments?._[0];
+  const args = minimist(process.argv.slice(2));
+
+  let command = args._[0] || "help";
+
+  if (args.version || args.v) {
+    command = "version";
+  }
+
+  if (args.help || args.h) {
+    command = "help";
+  }
 
   switch (command) {
-    case "towel":
-      console.log("You're one hoopy frood!");
+    case "version":
+      require("./commands/version")(args);
+      break;
+
+    case "help":
+      require("./commands/help")(args);
       break;
     default:
       if (command === undefined) {
