@@ -1,4 +1,5 @@
 const minimist = require("minimist");
+const error = require("./utils/error");
 
 module.exports = () => {
   console.log("DON'T PANIC");
@@ -23,10 +24,6 @@ module.exports = () => {
       require("./commands/help")(args);
       break;
     default:
-      if (command === undefined) {
-        console.log("Enter a valid command.");
-      } else {
-        console.log(`${command} is not a valid command.`);
-      }
+      error(`"${command}" is not a valid command.`, true);
   }
 };
