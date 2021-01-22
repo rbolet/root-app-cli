@@ -1,7 +1,7 @@
 const db = require("../service/db-service");
 
 exports.tables = () => {
-  const jsonData = db.getTable();
+  const jsonData = db.readDB();
 
   console.log("<<Drivers>>");
   console.table(jsonData.drivers);

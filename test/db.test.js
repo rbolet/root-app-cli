@@ -49,6 +49,7 @@ describe("Can CR(UD) into json tables", function () {
   });
 
   it("Can select from driver table", function () {
+    expect(db.select("drivers", { id: 4 })).to.deep.equal([]);
     expect(db.select("drivers", { id: 1 })).to.deep.equal([{ id: 1, name: "Steve" }]);
     expect(db.select("drivers")).to.deep.equal([
       { id: 1, name: "Steve" },
@@ -68,7 +69,11 @@ describe("Can CR(UD) into json tables", function () {
   });
 
   it("Can select from trips table", function () {
+    expect(db.select("trips", { id: 4 })).to.deep.equal([]);
     expect(db.select("trips", { id: 1 })).to.deep.equal([
+      { id: 1, driverId: 2, startTime: "12:00", endTime: "12:30", distance: 1.5 },
+    ]);
+    expect(db.select("trips", { driverId: 2 })).to.deep.equal([
       { id: 1, driverId: 2, startTime: "12:00", endTime: "12:30", distance: 1.5 },
     ]);
   });
