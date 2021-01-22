@@ -17,6 +17,10 @@ module.exports = () => {
     command = "help";
   }
 
+  if (input.file || input.f) {
+    command = "file";
+  }
+
   switch (command) {
     case "version":
       require("./commands/version")(args);
@@ -35,6 +39,9 @@ module.exports = () => {
       break;
     case "summary":
       require("./commands/summary");
+      break;
+    case "file":
+      require("./commands/file")(args);
       break;
     default:
       throw new Error(`"${command}" is not a valid command.`);

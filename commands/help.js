@@ -9,9 +9,13 @@ const menus = {
     summary ............ show total distance and speed of all drivers
     version ............ show package version
     help ............... show help menu for a command`,
-
+  db: `
+      db <options>
+      
+      status ............... show status of current json db tables
+      dangerouslyclearfortesting ... PERMANENTLY DELETE ALL DATA FROM JSON DB!`,
   towel: `
-    DON'T PANIC!`,
+      DON'T PANIC!`,
 };
 
 module.exports = (args) => {

@@ -1,1 +1,1 @@
-{"drivers":[],"trips":[]}
+{"drivers":[{"id":1,"name":"Dan"},{"id":2,"name":"Lauren"},{"id":3,"name":"Kumi"}],"trips":[{"id":1,"driverId":1,"startTime":"07:15","endTime":"07:45","distance":17.3},{"id":2,"driverId":1,"startTime":"06:12","endTime":"06:32","distance":21.8},{"id":3,"driverId":2,"startTime":"12:01","endTime":"13:16","distance":42}]}
