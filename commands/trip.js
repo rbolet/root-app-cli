@@ -1,7 +1,8 @@
 const db = require("../service/db-service");
 const calculate = require("../utils/calculate");
+const output = require("../utils/output");
 
-module.exports = (args) => {
+module.exports = (args, verbose) => {
   let [driverName, startTime, endTime, distance] = args;
 
   distance = parseFloat(distance);
@@ -25,6 +26,8 @@ module.exports = (args) => {
 
     const newTrip = db.insert("trips", { driverId, startTime, endTime, distance });
 
+    if (verbose) output.tables();
+    output.summary();
     //return for testing
     return newTrip;
   }

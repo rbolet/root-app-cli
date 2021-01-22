@@ -1,6 +1,13 @@
 const db = require("../service/db-service");
+const output = require("../utils/output");
 
-module.exports = (args) => {
+module.exports = (args, verbose) => {
   const [name] = args;
-  return db.insert("drivers", { name });
+  const newDriver = db.insert("drivers", { name });
+
+  if (verbose) output.tables();
+  output.summary();
+
+  //return for testing purposes;
+  return newDriver;
 };

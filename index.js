@@ -1,5 +1,4 @@
 const minimist = require("minimist");
-const error = require("./utils/error");
 
 global.rootDirName = __dirname;
 
@@ -8,6 +7,7 @@ module.exports = () => {
   const input = minimist(process.argv.slice(2));
 
   let [command, ...args] = input._;
+  let verbose = input.verbose || input.v;
 
   if (input.version || input.v) {
     command = "version";
@@ -21,11 +21,16 @@ module.exports = () => {
     case "version":
       require("./commands/version")(args);
       break;
-
     case "help":
       require("./commands/help")(args);
       break;
+    case "driver":
+      require("./commands/driver")(args, verbose);
+      break;
+    case "trip":
+      require("./commands/trip")(args, verbose);
+      break;
     default:
-      error(`"${command}" is not a valid command.`, true);
+      throw new Error(`"${command}" is not a valid command.`);
   }
 };

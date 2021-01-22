@@ -5,9 +5,11 @@ const calculate = require("./calculate");
 exports.tables = () => {
   const jsonData = db.readDB();
 
-  console.log("<<Drivers>>");
+  console.log(`
+  <<Drivers>>`);
   console.table(jsonData.drivers);
-  console.log("<<Trips>>");
+  console.log(`
+  <<Trips>>`);
   console.table(jsonData.trips);
   //return for testing purposes
   return jsonData;
@@ -22,7 +24,8 @@ exports.summary = () => {
     const { totalDistance, averageSpeed } = calculate.sumAndAverageRows(driverTrips.trips);
 
     const stringAverageSpeed = totalDistance > 0 ? ` @ ${averageSpeed} mph` : "";
-    const stringOutput = `${name}: ${totalDistance} miles${stringAverageSpeed}`;
+    const stringOutput = `
+    ${name}: ${totalDistance} miles${stringAverageSpeed}`;
 
     outputArray.push(stringOutput);
   }
