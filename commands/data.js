@@ -7,7 +7,7 @@ module.exports = (args) => {
 
   if (subCommand === "status") {
     output.tables();
-  } else if (subCommand === "dangerouslyclearfortesting") {
+  } else if (subCommand === "clear") {
     db.dangerouslyWipeDB();
     console.log("!! JSON db permanently cleared (hope you knew what you were doing) !!");
   }

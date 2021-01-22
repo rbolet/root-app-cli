@@ -3,18 +3,24 @@ const menus = {
   main: `
     root-trips-cli [command] <options>
 
-    driver ............. add driver to db
-    trip ............... add trip to db
-    db ................. show or clear json db status
+    driver ............. add driver to data
+    trip ............... add trip to data
+    data ............... show or clear json data status
+    db ................. alias for data
     summary ............ show total distance and speed of all drivers
-    file ............... import entire txt file to db
+    file ............... import entire txt file to data
     version ............ show package version
     help ............... show help menu for a command`,
   db: `
       db <options>
       
       status ............... show status of current json db tables
-      dangerouslyclearfortesting ... PERMANENTLY DELETE ALL DATA FROM JSON DB!`,
+      clear ... PERMANENTLY DELETE ALL DATA FROM JSON DB!`,
+  data: `
+    data <options>
+        
+        status ............... show status of current json db tables
+        clear ... PERMANENTLY DELETE ALL DATA FROM JSON DB!`,
   towel: `
       DON'T PANIC!`,
 };
