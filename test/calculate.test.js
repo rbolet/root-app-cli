@@ -30,5 +30,6 @@ describe("Calculate util functions", function () {
       totalDistance: 39,
       averageSpeed: 47,
     });
+    expect(calculate.sumAndAverageRows([])).to.deep.equal({ totalDistance: 0, averageSpeed: 0 });
   });
 });

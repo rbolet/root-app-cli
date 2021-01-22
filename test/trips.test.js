@@ -30,4 +30,16 @@ describe("Trip command properly adds a trip to the json db", function () {
       },
     ]);
   });
+
+  it("Trips < 5 mph are ignored", function () {
+    expect(trip(["Joe", "12:00", "12:30", "1.0"])).to.equal("Trips < 5 mph are ignored");
+    expect(trip(["Joe", "12:00", "12:30", "-1.0"])).to.equal("Trips < 5 mph are ignored");
+    expect(trip(["Joe", "12:00", "13:00", "4.4"])).to.equal("Trips < 5 mph are ignored");
+    expect(trip(["Joe", "12:00", "12:01", "0"])).to.equal("Trips < 5 mph are ignored");
+  });
+
+  it("Trips > 100 mph are ignored", function () {
+    expect(trip(["Joe", "12:00", "12:30", "200"])).to.equal("Trips > 100 mph are ignored");
+    expect(trip(["Joe", "12:00", "13:00", "5000"])).to.equal("Trips > 100 mph are ignored");
+  });
 });
