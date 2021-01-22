@@ -1,1 +1,1 @@
-{"drivers":[{"id":1,"name":"Joe"}],"trips":[{"id":1,"driverId":1,"startTime":"12:01","endTime":"13:16","distance":42}]}
+{"drivers":[],"trips":[]}

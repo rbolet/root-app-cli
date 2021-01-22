@@ -41,7 +41,7 @@ module.exports = () => {
       require("./commands/summary");
       break;
     case "file":
-      require("./commands/file")(args);
+      require("./commands/file").importFile(args);
       break;
     default:
       throw new Error(`"${command}" is not a valid command.`);

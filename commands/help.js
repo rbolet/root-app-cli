@@ -7,6 +7,7 @@ const menus = {
     trip ............... add trip to db
     db ................. show or clear json db status
     summary ............ show total distance and speed of all drivers
+    file ............... import entire txt file to db
     version ............ show package version
     help ............... show help menu for a command`,
   db: `
