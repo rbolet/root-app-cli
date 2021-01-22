@@ -6,7 +6,7 @@ module.exports = () => {
   const input = minimist(process.argv.slice(2));
 
   let [command, ...args] = input._;
-  let verbose = input.verbose || input.v;
+  let verbose = input.verbose;
   command = command.toLowerCase();
 
   if (input.version || input.v) {
