@@ -7,7 +7,7 @@ module.exports = () => {
 
   let [command, ...args] = input._;
   let verbose = input.verbose;
-  command = command.toLowerCase();
+  command = command ? command.toLowerCase() : "help";
 
   if (input.version || input.v) {
     command = "version";
@@ -35,7 +35,8 @@ module.exports = () => {
       require("./commands/trip")(args, verbose);
       break;
     case "db":
-      require("./commands/db")(args);
+    case "data":
+      require("./commands/data")(args);
       break;
     case "summary":
       require("./commands/summary");
