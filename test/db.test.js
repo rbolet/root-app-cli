@@ -1,5 +1,6 @@
 const expect = require("chai").expect;
 const db = require("../service/db-service");
+const dbCommand = require("../commands/db");
 
 describe("db service can insert to json 'tables'", function () {
   it("Can wipe the db for testing", function () {
@@ -86,5 +87,12 @@ describe("Can CR(UD) into json tables", function () {
       ],
       trips: [{ id: 1, driverId: 2, startTime: "12:00", endTime: "12:30", distance: 1.5 }],
     });
+  });
+});
+
+describe("Db command", function () {
+  it("Can wipe db with command", function () {
+    dbCommand(["DangerouslyClearForTesting"]);
+    expect(db.readDB()).to.deep.equal({ drivers: [], trips: [] });
   });
 });

@@ -24,8 +24,7 @@ exports.summary = () => {
     const { totalDistance, averageSpeed } = calculate.sumAndAverageRows(driverTrips.trips);
 
     const stringAverageSpeed = totalDistance > 0 ? ` @ ${averageSpeed} mph` : "";
-    const stringOutput = `
-    ${name}: ${totalDistance} miles${stringAverageSpeed}`;
+    const stringOutput = `${name}: ${totalDistance} miles${stringAverageSpeed}`;
 
     outputArray.push(stringOutput);
   }
@@ -34,6 +33,8 @@ exports.summary = () => {
 };
 
 function logSummary(summaryArray) {
+  console.log(`
+  *** Summary ***`);
   for (const line of summaryArray) {
     console.log(line);
   }
