@@ -33,6 +33,9 @@ module.exports = () => {
     case "db":
       require("./commands/db")(args);
       break;
+    case "summary":
+      require("./commands/summary");
+      break;
     default:
       throw new Error(`"${command}" is not a valid command.`);
   }

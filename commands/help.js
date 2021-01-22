@@ -3,12 +3,15 @@ const menus = {
   main: `
     root-trips-cli [command] <options>
 
-    towel .............. you know where your towel is
+    driver ............. add driver to db
+    trip ............... add trip to db
+    db ................. show or clear json db status
+    summary ............ show total distance and speed of all drivers
     version ............ show package version
     help ............... show help menu for a command`,
 
   towel: `
-    You are one hoopy frood!`,
+    DON'T PANIC!`,
 };
 
 module.exports = (args) => {
