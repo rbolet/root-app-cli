@@ -1,6 +1,8 @@
 const minimist = require("minimist");
 const error = require("./utils/error");
 
+global.rootDirName = __dirname;
+
 module.exports = () => {
   console.log("DON'T PANIC");
   const input = minimist(process.argv.slice(2));
