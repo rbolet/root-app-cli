@@ -2,40 +2,46 @@ const fs = require("fs");
 const driver = require("./driver");
 const trip = require("./trip");
 
-module.exports = (args) => {
+exports.importFile = (args) => {
   const [filePath] = args;
-  let commandLines = [];
-  let addDriverCommands = [];
-  let addTripCommands = [];
+  const commandLines = this.parseFile(filePath);
+  //split driver and trip commands to ensure driver commands are executed first
+  const { driverCommands, tripCommands } = this.splitCommands(commandLines);
 
+  for (let driverCommand of driverCommands) {
+    driver(driverCommand);
+  }
+
+  for (let tripCommand of tripCommands) {
+    trip(tripCommand);
+  }
+};
+
+exports.parseFile = (filePath) => {
   try {
     const string = fs.readFileSync(filePath, "utf8");
     // should this return null or []?
-    commandLines = string.split(/\n|\r/) ?? null;
+    return string.split(/\n|\r/) ?? null;
   } catch (err) {
     console.error(err);
   }
+};
+
+exports.splitCommands = (commandLines) => {
+  let driverCommands = [];
+  let tripCommands = [];
 
   for (const line of commandLines) {
     const inputs = line.split(" ");
-    if (inputs[0].toLowerCase() === "driver") {
-      addDriverCommands.push(inputs);
-    } else if (inputs[0].toLowerCase() === "trip") {
-      addTripCommands.push(inputs);
+
+    const command = inputs.shift().toLowerCase();
+    if (command === "driver") {
+      driverCommands.push(inputs);
+    } else if (command === "trip") {
+      tripCommands.push(inputs);
     } else {
       throw new Error("File parse error -- invalid command");
     }
   }
-
-  for (let driverCommand of addDriverCommands) {
-    //remove "Driver" from command array
-    driverCommand.shift();
-    driver(driverCommand);
-  }
-
-  for (let tripCommand of addTripCommands) {
-    //remove "Trip" from command array
-    tripCommand.shift();
-    trip(tripCommand);
-  }
+  return { driverCommands, tripCommands };
 };
